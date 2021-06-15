@@ -222,5 +222,32 @@ public class Memorabilia {
         }
     }
 
+       public void devolverPeliculaPrestada(){
+        int devolverIDPeli, devolverIDCliente;
+        buscarPrestamoPeliculas(idPelicula, idCliente);
+        System.out.println("Ingrese el ID de la pelicula que desea devolver");
+        devolverIDPeli = entrada.nextInt();
+        
+        System.out.println("Ingrese el ID del cliente que devuelve la película");
+        devolverIDCliente = entrada.nextInt();
+        
+        for (int j = 0; j < peliID.length; j++) {
+            if (peliID[j] == devolverIDPeli) {
+                peliDisponibilidad[j] = true;
+                System.out.println("\nCAMBIOS GUARDADOS: ESTADO DE DISPONIBILIDAD DE PELICULA\n");
+            }        
+        }
+        
+        for (int j = 0; j < clienteID.length; j++) {
+            if (clienteID[j] == devolverIDCliente) {
+                tienePeliculaPrestada[j] = false;
+                System.out.println("\nCAMBIOS GUARDADOS: ESTADO DE DISPONIBILIDAD DE PELICULA\n");
+            }        
+        }
+        
+        mostrarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
+    }
+
+
 
 //}
