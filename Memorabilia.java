@@ -175,5 +175,52 @@ public class Memorabilia {
         }  
     }
 
+    public void insertarPeliculas(){
+        int valorID;
+        for (int i = 5; i < 10; i++) {
+            System.out.print("\nIngrese el nombre de la pelicula: ");
+            entrada.nextLine();
+            peliNombre[i] = entrada.nextLine();
+            
+            System.out.print("Ingrese la categoria de la película (infantil, suspenso, anime, cienciaFiccion o comedia): ");
+            peliCategoria[i] = entrada.nextLine();
+                switch(peliCategoria[i]){
+                    case "infantil":
+                        ++contadorInfantil;
+                    break;
+                    
+                    case "suspenso":
+                        ++contadorSuspenso;
+                    break;
+                    
+                    case "anime":
+                        ++contadorAnime;
+                    break;
+                    
+                    case "cienciaFiccion":
+                        ++contadorCF;
+                    break;
+                    
+                    case "comedia":
+                        ++contadorComedia;
+                    break;
+                    
+                    default: ++contadorOtroGenero;
+                }
+            
+            do {                
+                System.out.print("NO SE PUEDEN INGRESAR ID REPETIDOS: Ingrese el ID de la pelicula: ");
+                valorID = entrada.nextInt();
+                entrada.nextLine();
+            } while (valorID == peliID[i]);
+                peliID[i] = valorID;
+
+            System.out.print("Ingrese el año en que se estrenó la película: ");
+            peliAnio[i] = entrada.nextInt(); 
+            
+            peliDisponibilidad[i] = true;
+        }
+    }
+
 
 //}
