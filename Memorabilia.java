@@ -115,6 +115,65 @@ public class Memorabilia {
     
  
 
+//METODOS
+    public void reportes(){
+        System.out.println("(✿◠‿◠) REPORTES\n");
+        System.out.println("Categoría: infantil           Cantidad de películas: " + contadorInfantil);
+        System.out.println("Categoría: suspenso           Cantidad de películas: " + contadorSuspenso);
+        System.out.println("Categoría: anime              Cantidad de películas: " + contadorAnime);
+        System.out.println("Categoría: cienciaFiccion     Cantidad de películas: " + contadorCF);
+        System.out.println("Categoría: comedia            Cantidad de películas: " + contadorComedia);
+        System.out.println("Categoría: Otro               Cantidad de películas: " + contadorOtroGenero);
+        
+        System.out.println("\nPELICULA MAS PRESTADA");
+        System.out.println(peliNombre[0]);
+        
+        System.out.println("\nPELICULA MENOS PRESTADA");
+        System.out.println(peliNombre[3]);
+        
+        System.out.println("\n(✿◠‿◠) CATEGORÍAS");
+        for (int i = 0; i < peliCategoria.length; i++) {
+            if (peliCategoria[i].equals("infantil")) {
+                System.out.println("infantil: " +peliNombre[i]);
+            }
+            else if (peliCategoria[i].equals("suspenso")) {
+                System.out.println("suspenso: "+peliNombre[i]);
+            }
+            else if (peliCategoria[i].equals("anime")) {
+                System.out.println("anime: " + peliNombre[i]);
+            }
+            else if (peliCategoria[i].equals("cienciaFiccion")) {
+                System.out.println("cienciaFiccion: " + peliNombre[i]);
+            }
+            else if (peliCategoria[i].equals("comedia")) {
+                System.out.println("comedia: " + peliNombre[i]);
+            }
+            else    {
+                System.out.println("otros: " + peliNombre[i]);
+            }
+            
+        }
+        
+        
+    }
+    
+    public void mostrarPeliculasOrdenadas(){
+        for ( String a : peliNombre ){
+            System.out.println(a);
+        }
+    }
+    
+    public void ordenarPeliculas(){
+        for (int i = 0; i < peliNombre.length; i++) {
+            for (int j = 0; j < peliNombre.length && i != j; j++) {
+                if (peliNombre[i].compareToIgnoreCase(peliNombre[j]) < 0) {
+                    String apoyo = peliNombre[i];
+                    peliNombre[i] = peliNombre[j];
+                    peliNombre[j] = apoyo;
+                }
+            }
+        }  
+    }
 
 
 //}
