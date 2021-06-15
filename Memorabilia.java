@@ -248,6 +248,11 @@ public class Memorabilia {
         mostrarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
     }
 
+    public void buscarPrestamoPeliculas(int[] idPelicula, int[] idCliente){
+        for (int i = 0; i < 5; i++) {
+            System.out.println(i + ". El cliente con ID: " + idCliente[i] + ", prestó la película con ID: " + idPelicula[i]);
+        }  
+    }
 
 
 //}
