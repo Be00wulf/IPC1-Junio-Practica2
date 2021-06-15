@@ -286,7 +286,142 @@ public class Memorabilia {
     }
   
 
-      
+
+    public void mostrarClientes(String[] clienteNombre, int[] clienteID, int [] clienteTel, boolean[] tienePeliculaPrestada){
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Nombre: " + clienteNombre[i] + "    ID: " + clienteID[i] + "    Teléfono: " + clienteTel + "    Prestamo: " + tienePeliculaPrestada[i]);
+        }
+    } 
+    
+    public void insertarClientes(String[] clienteNombre, int[] clienteID, int[] clienteTel, boolean[] tienePeliculaPrestada){
+        int numero;
+        
+        for (int i = 3; i < 5; i++) {
+            System.out.print("\nIngrese el nombre del cliente: ");
+            entrada.nextLine();
+            clienteNombre[i] = entrada.nextLine();
+            
+     
+            do {                
+                System.out.print("NO SE PUEDEN INGRESAR ID REPETIDOS: Ingrese el ID del cliente: ");
+                numero = entrada.nextInt();
+                entrada.nextLine();
+            } while (numero == clienteID[i]);
+                clienteID[i] = numero;
+
+            System.out.print("Ingrese el número de telefono del cliente: ");
+            clienteTel[i] = entrada.nextInt(); 
+        }
+            
+    }
+    
+    public void pelisDisponibles(){
+        for (int i = 0; i < peliDisponibilidad.length; i++) {
+            if (peliDisponibilidad[i] == true) {
+                System.out.println("Disponible: " + peliNombre[i]);
+            }
+        }
+    }
+    
+    public void mostrarPeliculas(String[] peliNombre, String[] peliCategoria, int[] peliID, int[] peliAnio, boolean[] peliDisponibilidad){
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Nombre: "+peliNombre[i] + "     Categoria: "+peliCategoria[i] + "     ID: " + peliID[i] + "     Año: " + peliAnio[i] + "     Disponibile: " + peliDisponibilidad[i]); 
+        }      
+    }
+
+    public void menuPrincipal(){    
+        switch (seleccionMenu){
+            case 1:
+                int condiciones; 
+                System.out.println("SOLO PUEDE ALQUILAR 1 PELICULA A LA VEZ"
+                                    + "\n1. ACEPTAS             2. CERRAR");
+                condiciones = entrada.nextInt();
+                
+                if (condiciones == 1) {
+                    System.out.println("\n(✿◠‿◠) PELICULAS DISPONIBLES");
+                    mostrarPeliculas(peliNombre, peliCategoria, peliID, peliAnio, peliDisponibilidad);
+                    System.out.println();
+                    System.out.println("\n(✿◠‿◠) CLIENTES");
+                    mostrarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
+                    System.out.println();
+                    insertarPrestamoPeliculas(idPelicula, idCliente, diasPrestamo);
+                    System.out.println();  
+                }
+                
+                else if (condiciones == 2) {
+                    System.out.println("OK");
+                }
+                
+                mostrarMenuPrincipal();
+            break;
+
+            case 2:
+                System.out.println("\nDEVOLUCION DE PELICULAS");
+                devolverPeliculaPrestada();
+                mostrarMenuPrincipal();
+            break;
+
+            case 3:
+                mostrarPeliculas(peliNombre, peliCategoria, peliID, peliAnio, peliDisponibilidad); 
+                mostrarMenuPrincipal();
+            break;
+
+            case 4:
+                insertarPeliculas();
+                mostrarPeliculas(peliNombre, peliCategoria, peliID, peliAnio, peliDisponibilidad);
+                mostrarMenuPrincipal();
+            break;
+
+            case 5:
+                insertarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
+                mostrarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
+                mostrarMenuPrincipal();
+            break;
+
+            case 6:
+                mostrarClientes(clienteNombre, clienteID, clienteTel, tienePeliculaPrestada);
+                mostrarMenuPrincipal();
+            break;
+
+            case 7:
+                reportes();
+                mostrarPeliculas(peliNombre, peliCategoria, peliID, peliAnio, peliDisponibilidad);
+                mostrarMenuPrincipal();
+                
+            break;
+
+            case 8:
+                mostrarPeliculasOrdenadas();
+                mostrarMenuPrincipal();
+            break;
+              
+            case 9: 
+                System.out.println("ADIOS");
+            break;
+
+            default:
+               System.out.println(" ¯\\_( ͡❛ ͜ʖ ͡❛)_/¯    OPCION NO ENCONTRADA");
+        }
+    }
+  
+    public void mostrarMenuPrincipal(){
+        do {
+            System.out.println("\n(⊙.⊙(☉̃ₒ☉)⊙.⊙)⊙.⊙(☉̃ₒ☉⊙.))⊙.)     𝓜𝓔𝓝𝓤     ⊙.)⊙.⊙) ⊙.⊙(☉̃ₒ☉)⊙.⊙)(⊙.⊙(☉̃ₒ☉)"
+                    + "\nʕ•́ᴥ•̀ʔっ    1. Préstamo de películas"
+                    + "\nʕ•́ᴥ•̀ʔっ    2. Devolución de películas"
+                    + "\nʕ•́ᴥ•̀ʔっ    3. Mostrar las películas"
+                    + "\nʕ•́ᴥ•̀ʔっ    4. Ingreso de películas"
+                    + "\nʕ•́ᴥ•̀ʔっ    5. Ingresar clientes nuevos"
+                    + "\nʕ•́ᴥ•̀ʔっ    6. Mostrar clientes"
+                    + "\nʕ•́ᴥ•̀ʔっ    7. Ver reportes"
+                    + "\nʕ•́ᴥ•̀ʔっ    8. Ordenar las películas de forma ascendente respecto al nombre"
+                    + "\nʕ•́ᴥ•̀ʔっ    9. Salir");
+            System.out.print("\nIngrese el numero de operacion que desea realizar: ");
+            seleccionMenu = entrada.nextInt();
+            menuPrincipal();
+        } while (seleccionMenu < 1 || seleccionMenu > 9);
+    }
 
 
-//}
+
+}
