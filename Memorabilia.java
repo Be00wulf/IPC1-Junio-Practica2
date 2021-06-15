@@ -254,5 +254,39 @@ public class Memorabilia {
         }  
     }
 
+    public void insertarPrestamoPeliculas(int[] idPelicula, int[] idCliente, int[] diasPrestamo){
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Ingrese el ID de la pelicula: ");
+            idPelicula[i] = entrada.nextInt();
+
+            System.out.print("Ingrese el ID del cliente: ");
+            idCliente[i] = entrada.nextInt();
+
+            System.out.print("Ingrese los dias de prestamo de la película: ");
+            diasPrestamo[i] = entrada.nextInt();
+
+
+            //cambios de estado
+            for (int j = 0; j < peliID.length; j++) {
+                if (peliID[j] == idPelicula[i]) {
+                    peliDisponibilidad[j] = false;
+                    System.out.println("\nCAMBIOS GUARDADOS: ESTADO DE DISPONIBILIDAD DE PELICULA\n");
+                }        
+            }
+
+            for (int j = 0; j < clienteID.length; j++) {
+                if (clienteID[j] == idCliente[i]) {
+                    tienePeliculaPrestada[j] = true;
+                    System.out.println("\nCAMBIOS GUARDADOS: ESTADO DE PELICULA PRESTADA\n");
+                }
+            }
+            
+           break;
+        }
+    }
+  
+
+      
+
 
 //}
